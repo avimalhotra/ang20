@@ -1,10 +1,21 @@
 <div class="container">
   <h1>Hello {{title}}, version: {{version}}</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.!</p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.!</p>
+  <p [ngClass]="p">Lorem ipsum dolor sit amet consectetur adipisicing elit.!</p>
+  <p>{{2+3}}</p>
+  <p>{{2*3}}</p>
+  <h2>Arrays</h2>
+  <p>{{data.length}}</p>
+  <p>{{data.at(0)}}</p>
+  <p>{{data.at(-1)}}</p>
+  <!-- <p>{{data.sort()}}</p>   -->
+  <h2>Object</h2>
+  <p>{{swift.name}}</p>
+  <h2>Function</h2>
+  <p>{{ reverseString("lorem")}} </p>
 
+  <!-- <img [src]="src" [alt]="alt"> -->
+  <button class="btn btn-primary" [disabled]="dis" (click)="counter()">Increment</button> <output>{{count}}</output>
   <hr>
-  
   <app-course></app-course>
 
 </div>

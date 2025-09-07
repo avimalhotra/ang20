@@ -1,27 +1,34 @@
 import { Component } from '@angular/core';
 import { Course } from './course/course';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-root',
-  // selector: '[data-app]',
-  imports: [Course],
+  imports: [Course, CommonModule],
   templateUrl: './app.html',
-  // template:'<h1>Hello {{title}}</h1>',
-  styleUrl: './app.css'
-  // styles:['h1{color:red}','p{color:blue}']
-  // styleUrls: ['./app.css','./app-old.css']
+  styleUrl: './app.css',
+  preserveWhitespaces:true
 })
 
 export class App {
   title="Angular";
   version=20;
+  alt="star";
+  src="favicon.ico";
+  dis=false;
+  p="lead";
+  count=0;
 
-  // x=null;
+  data=["swift","polo","audi","bmw"];
+  swift={name:"swift",power:82};
 
-  // ngOnInit(){
-  //   console.log(this.x??"n/d");
-  // }
+  // sayHi(){ return "Hello Angular" };
+  // sayHi(){console.log("Hello Angular") };
 
+  counter(){this.count=this.count+1}
+
+ 
+  reverseString=(x:string)=> x.split("").reverse().join("");
 
 }
