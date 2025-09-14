@@ -1,21 +1,24 @@
 <div class="container">
   <h1>Hello {{title}}, version: {{version}}</h1>
-  <p [ngClass]="p">Lorem ipsum dolor sit amet consectetur adipisicing elit.!</p>
-  <p>{{2+3}}</p>
-  <p>{{2*3}}</p>
-  <h2>Arrays</h2>
-  <p>{{data.length}}</p>
-  <p>{{data.at(0)}}</p>
-  <p>{{data.at(-1)}}</p>
-  <!-- <p>{{data.sort()}}</p>   -->
-  <h2>Object</h2>
-  <p>{{swift.name}}</p>
-  <h2>Function</h2>
-  <p>{{ reverseString("lorem")}} </p>
 
-  <!-- <img [src]="src" [alt]="alt"> -->
-  <button class="btn btn-primary" [disabled]="dis" (click)="counter()">Increment</button> <output>{{count}}</output>
+  <!-- <input type="text" (input)="t=$event.target.value"> <output>{{t}}</output> -->
+ <div class="row align-items-center">
+  <div class="col-auto"><label for="name">Name:</label>  </div>
+  <div class="col-auto"> <input class="form-control" type="text" [(ngModel)]="name" id="name"> </div>
+  <div class="col-auto"><output>{{name.toUpperCase()}}</output></div>
+ </div>
+ <div class="row align-items-center my-3">
+  <div class="col-auto"><label for="age">Age:</label>  </div>
+    <div class="col-auto"> <input class="form-control" type="number" [(ngModel)]="num"></div>
+    <div class="col-auto"> <output>{{num.toLocaleString('en-in')}}</output></div>
+ </div>
+  
+
+
+  
+
+
   <hr>
-  <app-course></app-course>
+  <!-- <app-course></app-course> -->
 
 </div>
