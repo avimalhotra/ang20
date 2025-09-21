@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Hello {{title}}, version: {{version}}</h1>
 
+<<<<<<< HEAD
   <label>Name: <input type="text" [(ngModel)]="name"></label> <output>{{name}}</output>
   <!-- <label>Age: <input type="number" (input)="age=$any($event.target).value"></label> <output>{{age}}</output> -->
   <label>Age: <input type="number" [(ngModel)]="age"></label> <output>{{age}}</output>
@@ -10,5 +11,26 @@
   <p [ngClass]="t">{{zz}}</p>
   <hr>
   <app-course [x]="xFromTop" (changeY)="showY($event)" (z)="showZ()"></app-course>
+=======
+  <!-- <input type="text" (input)="t=$event.target.value"> <output>{{t}}</output> -->
+ <div class="row align-items-center">
+  <div class="col-auto"><label for="name">Name:</label>  </div>
+  <div class="col-auto"> <input class="form-control" type="text" [(ngModel)]="name" id="name"> </div>
+  <div class="col-auto"><output>{{name.toUpperCase()}}</output></div>
+ </div>
+ <div class="row align-items-center my-3">
+  <div class="col-auto"><label for="age">Age:</label>  </div>
+    <div class="col-auto"> <input class="form-control" type="number" [(ngModel)]="num"></div>
+    <div class="col-auto"> <output>{{num.toLocaleString('en-in')}}</output></div>
+ </div>
+  
+
+
+  
+
+
+  <hr>
+  <!-- <app-course></app-course> -->
+>>>>>>> 4e2da33fecdaeb035d78233038f3203d4851067b
 
 </div>
