@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Course } from './course/course';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-root',
-  imports: [Course, CommonModule],
+  imports: [Course, CommonModule, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
   preserveWhitespaces:true
@@ -14,21 +15,25 @@ import { CommonModule } from '@angular/common';
 export class App {
   title="Angular";
   version=20;
-  alt="star";
-  src="favicon.ico";
-  dis=false;
-  p="lead";
-  count=0;
 
-  data=["swift","polo","audi","bmw"];
-  swift={name:"swift",power:82};
+  name="avinash";
+  age=0;
+  check=false;
 
-  // sayHi(){ return "Hello Angular" };
-  // sayHi(){console.log("Hello Angular") };
+  xFromTop=15;
 
-  counter(){this.count=this.count+1}
+  y=0;
 
- 
-  reverseString=(x:string)=> x.split("").reverse().join("");
+  showY(count:number){
+    this.y=count;
+  }
+
+  zz="n/a";
+  showZ(){
+    this.zz="hello";
+  }
+
+  t="lead";
+
 
 }
