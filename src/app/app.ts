@@ -1,21 +1,14 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { Course } from './course/course';
-import { FormsModule } from '@angular/forms';
-=======
-// import { Course } from './course/course';
->>>>>>> 4e2da33fecdaeb035d78233038f3203d4851067b
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CustomPipe } from './custom-pipe';
+import { SortDataPipe } from './sort-data-pipe';
 
 
 @Component({
   selector: 'app-root',
-<<<<<<< HEAD
-  imports: [Course, CommonModule, FormsModule],
-=======
-  imports: [ CommonModule, FormsModule],
->>>>>>> 4e2da33fecdaeb035d78233038f3203d4851067b
+  imports: [Course, CommonModule, FormsModule, CustomPipe, SortDataPipe],
   templateUrl: './app.html',
   styleUrl: './app.css',
   preserveWhitespaces:true
@@ -25,30 +18,27 @@ export class App {
   title="Angular";
   version=20;
 
-<<<<<<< HEAD
-  name="avinash";
-  age=0;
-  check=false;
+  valid=true;
+  invalid=false;
 
-  xFromTop=15;
+  // terms=null;
+  
+  cars=["swift","baleno","polo","i20"];
+  swift={name:"swift", power:82, torque:112};
 
-  y=0;
+  data=[
+        {"name": "swift", "type": "hatchback", "price":810000},
+        {"name": "dzire", "type": "hatchback", "price":880000},
+        {"name": "ciaz", "type": "sedan", "price":1000000},
+        {"name": "baleno", "type": "hatchback", "price":850000},
+        {"name": "brezza", "type": "suv", "price":1400000},
+        {"name": "fronx", "type": "hatchback", "price":1000000},
+        {"name": "jimny", "type": "suv", "price":1300000}
+    ];
+  
+    days=2;
+    h1={ "font-size" : "50px", "color":"#00f" }
 
-  showY(count:number){
-    this.y=count;
-  }
-
-  zz="n/a";
-  showZ(){
-    this.zz="hello";
-  }
-
-  t="lead";
-
-=======
-  name="";
-  num=0;
->>>>>>> 4e2da33fecdaeb035d78233038f3203d4851067b
-
+    date=new Date().getTime();
   
 }

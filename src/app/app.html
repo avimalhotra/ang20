@@ -1,36 +1,77 @@
 <div class="container">
-  <h1>Hello {{title}}, version: {{version}}</h1>
+  <h1 [ngStyle]="h1">Hello {{title}}, version: {{version}}</h1>
 
-<<<<<<< HEAD
-  <label>Name: <input type="text" [(ngModel)]="name"></label> <output>{{name}}</output>
-  <!-- <label>Age: <input type="number" (input)="age=$any($event.target).value"></label> <output>{{age}}</output> -->
-  <label>Age: <input type="number" [(ngModel)]="age"></label> <output>{{age}}</output>
-  <hr>
-  <label>Terms: <input type="checkbox" [(ngModel)]="check"></label> <output>{{check}}</output>
-  <p>{{y}}</p>
-  <p [ngClass]="t">{{zz}}</p>
-  <hr>
-  <app-course [x]="xFromTop" (changeY)="showY($event)" (z)="showZ()"></app-course>
-=======
-  <!-- <input type="text" (input)="t=$event.target.value"> <output>{{t}}</output> -->
- <div class="row align-items-center">
-  <div class="col-auto"><label for="name">Name:</label>  </div>
-  <div class="col-auto"> <input class="form-control" type="text" [(ngModel)]="name" id="name"> </div>
-  <div class="col-auto"><output>{{name.toUpperCase()}}</output></div>
+  <p>Date: {{date | date : 'medium'}}</p>
+
+  <p>{{ "ABCD" | custom }}</p>
+
+  <!-- <p *ngIf="valid">Valid Code</p>
+  <p *ngIf="invalid">InValid Code</p> -->
+
+  <input type="text" [(ngModel)]="version">
+
+
+  @if (valid) { <p>Valid Code</p>}
+  @else { <p>Invalid Code</p> }
+
+  @if (version==0) { <p>Zero</p> }
+  @else if (version>0) { <p>Positive</p> }
+  @else if(version<0){ <p>Negative</p> }
+  @else{ <p>Invalid</p> }
+
+
+   <!-- @if (terms) { <p>I agree</p>}
+  @else { <p>Not Agree</p> } -->
+
+  <h2>Array</h2>
+
+  <ul>
+    <!-- <li *ngFor="let i of cars">{{i}}</li> -->
+    @for (i of cars; track $index) {
+      <li>({{$index}}) - {{i}}</li>
+    }
+     @empty {
+      <p>No cars found</p>
+     }
+  </ul>
+
+ <div class="table-responsive">
+   <table class="table table-bordered">
+      <thead><tr><th>S No</th><th>Key</th><th>Value</th></tr></thead>
+      <tbody>
+         @for (item of swift | keyvalue; track $index) { 
+          <tr> <td>{{$index+1}}</td><td>{{item.key}}</td><td>{{item.value}}</td></tr>
+        }
+      </tbody>
+  </table>
  </div>
- <div class="row align-items-center my-3">
-  <div class="col-auto"><label for="age">Age:</label>  </div>
-    <div class="col-auto"> <input class="form-control" type="number" [(ngModel)]="num"></div>
-    <div class="col-auto"> <output>{{num.toLocaleString('en-in')}}</output></div>
- </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+        <thead><tr><th>S No</th><th>Name</th><th>Type</th><th>Price</th></tr></thead>
+        <tbody>
+          @for (i of data | sortData :'price' : false ; track $index) {
+            <tr><td>{{$index+1}}</td><td>{{i.name | titlecase}}</td><td>{{i.type}}</td><td>{{i.price | currency : "INR" }}</td></tr>
+          }
+        </tbody>
+    </table>
+  </div>
+
+  @switch (days) {
+    @case ( 0 ) { <p>Its Sunday</p> }
+    @case ( 1 ) { <p>Its Monday</p> }
+    @case ( 2 ) { <p>Its Tuesday</p> }
+    @case ( 3 ) { <p>Its Wednesday</p> }
+    @case ( 4 ) { <p>Its Thursday</p> }
+    @case ( 5 ) { <p>Its Friday</p> }
+    @case ( 6 ) { <p>Its Saturday</p> }
+    @default { <p>Invalid day</p> }
+  }
+
   
 
 
-  
-
-
   <hr>
-  <!-- <app-course></app-course> -->
->>>>>>> 4e2da33fecdaeb035d78233038f3203d4851067b
+  <app-course></app-course>
 
 </div>
