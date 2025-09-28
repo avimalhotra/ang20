@@ -1,77 +1,49 @@
 <div class="container">
-  <h1 [ngStyle]="h1">Hello {{title}}, version: {{version}}</h1>
+  <h1>Hello {{ title }}, version: {{ version }}</h1>
 
-  <p>Date: {{date | date : 'medium'}}</p>
+  <!-- <input type="number" [(ngModel)]="version" />
+  <output>{{ version }}</output> -->
 
-  <p>{{ "ABCD" | custom }}</p>
-
-  <!-- <p *ngIf="valid">Valid Code</p>
-  <p *ngIf="invalid">InValid Code</p> -->
-
-  <input type="text" [(ngModel)]="version">
-
-
-  @if (valid) { <p>Valid Code</p>}
-  @else { <p>Invalid Code</p> }
-
-  @if (version==0) { <p>Zero</p> }
-  @else if (version>0) { <p>Positive</p> }
-  @else if(version<0){ <p>Negative</p> }
-  @else{ <p>Invalid</p> }
-
-
-   <!-- @if (terms) { <p>I agree</p>}
-  @else { <p>Not Agree</p> } -->
-
-  <h2>Array</h2>
-
-  <ul>
-    <!-- <li *ngFor="let i of cars">{{i}}</li> -->
-    @for (i of cars; track $index) {
-      <li>({{$index}}) - {{i}}</li>
-    }
-     @empty {
-      <p>No cars found</p>
-     }
-  </ul>
-
- <div class="table-responsive">
-   <table class="table table-bordered">
-      <thead><tr><th>S No</th><th>Key</th><th>Value</th></tr></thead>
-      <tbody>
-         @for (item of swift | keyvalue; track $index) { 
-          <tr> <td>{{$index+1}}</td><td>{{item.key}}</td><td>{{item.value}}</td></tr>
-        }
-      </tbody>
-  </table>
- </div>
-
-  <div class="table-responsive">
-    <table class="table table-bordered">
-        <thead><tr><th>S No</th><th>Name</th><th>Type</th><th>Price</th></tr></thead>
-        <tbody>
-          @for (i of data | sortData :'price' : false ; track $index) {
-            <tr><td>{{$index+1}}</td><td>{{i.name | titlecase}}</td><td>{{i.type}}</td><td>{{i.price | currency : "INR" }}</td></tr>
-          }
-        </tbody>
-    </table>
-  </div>
-
-  @switch (days) {
-    @case ( 0 ) { <p>Its Sunday</p> }
-    @case ( 1 ) { <p>Its Monday</p> }
-    @case ( 2 ) { <p>Its Tuesday</p> }
-    @case ( 3 ) { <p>Its Wednesday</p> }
-    @case ( 4 ) { <p>Its Thursday</p> }
-    @case ( 5 ) { <p>Its Friday</p> }
-    @case ( 6 ) { <p>Its Saturday</p> }
-    @default { <p>Invalid day</p> }
-  }
-
-  
-
-
-  <hr>
+  <form #loginform="ngForm" novalidate (ngSubmit)="onSubmit(loginform)">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" #name="ngModel" pattern="[a-zA-Z]{1}[a-zA-Z ]{2,20}" required>
+      <span class="text-warning" [hidden]="name.valid || name.dirty">Enter Name</span>
+      <span [hidden]="name.valid || name.pristine" class="text-danger">Invalid Name</span>
+      <span [hidden]="name.invalid || name.pristine" class="text-success" >Name Accepted</span>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" name="age" min="18" max="25" [(ngModel)]="model.age" #age="ngModel" required>
+      <span class="text-warning" [hidden]="age.valid || age.dirty">Enter Age</span>
+      <span [hidden]="age.valid || age.pristine" class="text-danger" class="text-danger">Age invalid</span>
+      <span [hidden]="age.invalid || age.pristine" class="text-success">Age accepted</span>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+      <span class="text-warning" [hidden]="email.valid || email.dirty">Enter Email</span>
+      <span [hidden]="email.valid || email.pristine" class="text-danger">Invalid email id</span>
+      <span [hidden]="email.invalid || email.pristine" class="text-success">Email accepted</span>
+    </div>
+    <div class="mb-3">
+      <label for="pass" class="form-label">Password</label>
+      <input type="password" class="form-control" id="pass" name="password" [(ngModel)]="model.password" #pass="ngModel" required>
+      <span [hidden]="pass.valid || pass.dirty" class="text-warning">Enter Password</span>
+      <span [hidden]="pass.valid || pass.pristine" class="text-danger">Invalid password</span>
+      <span [hidden]="pass.invalid || pass.pristine" class="text-success">Password accepted</span>
+    </div>
+    <div class="mb-3">
+      <label for="chk" class="form-label">Terms</label>
+      <input type="checkbox" class="form-check" id="chk" name="terms" [(ngModel)]="model.terms" #terms="ngModel" required>
+      <span [hidden]="terms.valid || terms.dirty" class="text-warning">Check this</span>
+      <span [hidden]="terms.invalid || terms.pristine" class="text-success">Terms Accepted</span>
+    </div>
+     <div class="mb-3">
+      <button class="btn btn-primary" type="submit" [disabled]="loginform.invalid">Login</button>
+      <button class="btn btn-primary" type="reset" (click)="loginform.reset()">Reset</button>
+     </div>
+  </form>
+  <hr />
   <app-course></app-course>
-
 </div>

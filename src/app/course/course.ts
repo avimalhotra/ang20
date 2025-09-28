@@ -5,15 +5,8 @@ import { Component, EventEmitter, input, Input, output, Output } from '@angular/
   imports: [],
   templateUrl: './course.html',
   styleUrl: './course.css',
-  preserveWhitespaces:true
+  preserveWhitespaces: true,
 })
 export class Course {
-  course="TypeScript";
-
-
-
- 
-
-
-
+  course = 'TypeScript';
 }
