@@ -1,10 +1,7 @@
 <div class="container">
   <h1>Hello {{ title }}, version: {{ version }}</h1>
 
-  <!-- <input type="number" [(ngModel)]="version" />
-  <output>{{ version }}</output> -->
-
-  <form #loginform="ngForm" novalidate (ngSubmit)="onSubmit(loginform)">
+  <!-- <form #loginform="ngForm" novalidate (ngSubmit)="onSubmit(loginform)">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" #name="ngModel" pattern="[a-zA-Z]{1}[a-zA-Z ]{2,20}" required>
@@ -43,7 +40,44 @@
       <button class="btn btn-primary" type="submit" [disabled]="loginform.invalid">Login</button>
       <button class="btn btn-primary" type="reset" (click)="loginform.reset()">Reset</button>
      </div>
+  </form> -->
+
+  <form [formGroup]="loginform" novalidate (ngSubmit)="submitForm()">
+       <div class="mb-5">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" required name="email" required> 
+        <!-- <span>{{loginform.value.email}}</span> -->
+
+        @if( (loginform.get('email')?.hasError('required') && loginform.get('email')?.pristine) || (loginform.get('email')?.hasError('required') && loginform.get('email')?.dirty)  ){
+           <span class="text-warning position-absolute">Enter Email</span>
+        }
+        @if( loginform.get('email')?.hasError('email') && loginform.get('email')?.dirty ){
+           <span class="text-danger position-absolute">Enter Valid Email</span>
+        }
+        
+    </div>
+    <div class="mb-5">
+        <label for="pass" class="form-label">Password</label>
+        <input type="password" class="form-control" id="pass" formControlName="password" required name="password" required>
+
+        @if( (loginform.get('password')?.hasError('required') && loginform.get('password')?.pristine)   ){
+           <span class="text-warning position-absolute">Enter Password</span>
+        }
+        @if( loginform.get('password')?.invalid && loginform.get('password')?.dirty ){
+           <span class="text-danger position-absolute">Enter Valid Password</span>
+        }
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" type="submit" [disabled]="loginform.invalid">Submit</button>
+      <!-- <span>{{loginform.value.email}}</span>  -->
+      <!-- <span>{{loginform.value.password}}</span>  -->
+      <span>{{loginform.status}}</span>
+        <!-- <span>{{loginform.valid}}</span> -->
+        <!-- <span>{{loginform.invalid}}</span> -->
+    </div>
   </form>
+  
+  
   <hr />
   <app-course></app-course>
 </div>
