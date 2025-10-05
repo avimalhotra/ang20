@@ -1,83 +1,24 @@
 <div class="container">
-  <h1>Hello {{ title }}, version: {{ version }}</h1>
+  <header>
+    <h1>Hello {{ title }}, version: {{ version }}</h1>
+  </header>
+  <nav>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+        <li class="list-inline-item"><a routerLink="/course" routerLinkActive="active">Course</a></li>
+        <li class="list-inline-item"><a routerLink="/trainer" routerLinkActive="active">Trainer</a></li>
+        <li class="list-inline-item"><a routerLink="/branches" routerLinkActive="active">Branches</a></li>
+      </ul>
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+     <!-- <app-course></app-course>
+    <app-trainer></app-trainer> -->
+  </main>
 
-  <!-- <form #loginform="ngForm" novalidate (ngSubmit)="onSubmit(loginform)">
-    <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" #name="ngModel" pattern="[a-zA-Z]{1}[a-zA-Z ]{2,20}" required>
-      <span class="text-warning" [hidden]="name.valid || name.dirty">Enter Name</span>
-      <span [hidden]="name.valid || name.pristine" class="text-danger">Invalid Name</span>
-      <span [hidden]="name.invalid || name.pristine" class="text-success" >Name Accepted</span>
-    </div>
-    <div class="mb-3">
-      <label for="age" class="form-label">Age</label>
-      <input type="number" class="form-control" id="age" name="age" min="18" max="25" [(ngModel)]="model.age" #age="ngModel" required>
-      <span class="text-warning" [hidden]="age.valid || age.dirty">Enter Age</span>
-      <span [hidden]="age.valid || age.pristine" class="text-danger" class="text-danger">Age invalid</span>
-      <span [hidden]="age.invalid || age.pristine" class="text-success">Age accepted</span>
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="model.email" #email="ngModel" required>
-      <span class="text-warning" [hidden]="email.valid || email.dirty">Enter Email</span>
-      <span [hidden]="email.valid || email.pristine" class="text-danger">Invalid email id</span>
-      <span [hidden]="email.invalid || email.pristine" class="text-success">Email accepted</span>
-    </div>
-    <div class="mb-3">
-      <label for="pass" class="form-label">Password</label>
-      <input type="password" class="form-control" id="pass" name="password" [(ngModel)]="model.password" #pass="ngModel" required>
-      <span [hidden]="pass.valid || pass.dirty" class="text-warning">Enter Password</span>
-      <span [hidden]="pass.valid || pass.pristine" class="text-danger">Invalid password</span>
-      <span [hidden]="pass.invalid || pass.pristine" class="text-success">Password accepted</span>
-    </div>
-    <div class="mb-3">
-      <label for="chk" class="form-label">Terms</label>
-      <input type="checkbox" class="form-check" id="chk" name="terms" [(ngModel)]="model.terms" #terms="ngModel" required>
-      <span [hidden]="terms.valid || terms.dirty" class="text-warning">Check this</span>
-      <span [hidden]="terms.invalid || terms.pristine" class="text-success">Terms Accepted</span>
-    </div>
-     <div class="mb-3">
-      <button class="btn btn-primary" type="submit" [disabled]="loginform.invalid">Login</button>
-      <button class="btn btn-primary" type="reset" (click)="loginform.reset()">Reset</button>
-     </div>
-  </form> -->
-
-  <form [formGroup]="loginform" novalidate (ngSubmit)="submitForm()">
-       <div class="mb-5">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" formControlName="email" required name="email" required> 
-        <!-- <span>{{loginform.value.email}}</span> -->
-
-        @if( (loginform.get('email')?.hasError('required') && loginform.get('email')?.pristine) || (loginform.get('email')?.hasError('required') && loginform.get('email')?.dirty)  ){
-           <span class="text-warning position-absolute">Enter Email</span>
-        }
-        @if( loginform.get('email')?.hasError('email') && loginform.get('email')?.dirty ){
-           <span class="text-danger position-absolute">Enter Valid Email</span>
-        }
-        
-    </div>
-    <div class="mb-5">
-        <label for="pass" class="form-label">Password</label>
-        <input type="password" class="form-control" id="pass" formControlName="password" required name="password" required>
-
-        @if( (loginform.get('password')?.hasError('required') && loginform.get('password')?.pristine)   ){
-           <span class="text-warning position-absolute">Enter Password</span>
-        }
-        @if( loginform.get('password')?.invalid && loginform.get('password')?.dirty ){
-           <span class="text-danger position-absolute">Enter Valid Password</span>
-        }
-    </div>
-    <div class="mb-3">
-      <button class="btn btn-primary" type="submit" [disabled]="loginform.invalid">Submit</button>
-      <!-- <span>{{loginform.value.email}}</span>  -->
-      <!-- <span>{{loginform.value.password}}</span>  -->
-      <span>{{loginform.status}}</span>
-        <!-- <span>{{loginform.valid}}</span> -->
-        <!-- <span>{{loginform.invalid}}</span> -->
-    </div>
-  </form>
+  <footer>
+    <p>&copy; 2025</p>
+  </footer>
+ 
   
-  
-  <hr />
-  <app-course></app-course>
 </div>
