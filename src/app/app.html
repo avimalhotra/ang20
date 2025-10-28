@@ -17,7 +17,14 @@
     <router-outlet></router-outlet>
 
     <hr>
-    <p>{{data}}</p>
+
+    <button (click)="checkData()">Data</button>
+
+    <ol>
+      @for (item of data; track $index) {
+        <li>{{item.name}}</li>
+      }
+    </ol>
      
   </main>
 

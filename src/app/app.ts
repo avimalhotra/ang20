@@ -9,17 +9,15 @@ import { Appservice } from './appservice';
 import { Error } from './error/error';
 import { DevError } from './dev-error';
 
+import { Web } from './web';
+
 @Component({
   selector: 'app-root',
   imports: [Course, CommonModule, FormsModule, Trainer, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css',
-  // encapsulation:ViewEncapsulation.None,
   preserveWhitespaces: true,
-  // providers:[Appservice]
-  // providers:[Error],
-  providers:[{provide:Error, useExisting:DevError}],
-
+  providers:[ Web ]
 })
 
 export class App {
@@ -27,25 +25,26 @@ export class App {
   version = 20;
 
   data:any;
-  res:any;
-  err:any;
 
-  constructor( private service:Appservice, private error:Error){
-    // fetch("https://jsonplaceholder.typicode.com/users").then(i=>i.json()).then(i=>console.log(i )); 
-  }
+  constructor( private web:Web){ }
 
   ngOnInit(){
-      this.data=this.service.getResponse(2,3);
-      console.log( this.data );
 
-      this.checkError();
+    // fetch("https://api.github.com/users/avimalhotra").then(i=>i.json()).then(i=>console.log(i)).catch(i=>console.warn(i));
+    // fetch("https://jsonplaceholder.typicode.com/users").then(i=>i.json()).then(i=>console.log(i)).catch(i=>console.warn(i));
+
+    // console.log( this.web.getData() );       // observable
+
   }
 
-  checkError(){
-    this.err=this.error;
-    console.log(this.err);
+  checkData(){
+     this.web.getData().subscribe(res=>{
+      this.data=res;
+      console.log(this.data);
+    });
   }
 
+  
   
 
 
