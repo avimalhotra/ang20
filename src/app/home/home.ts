@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Appservice } from '../appservice';
+import { ɵEmptyOutletComponent } from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [ɵEmptyOutletComponent],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

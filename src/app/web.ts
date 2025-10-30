@@ -9,8 +9,15 @@ export class Web {
   constructor(private http:HttpClient){ }
 
   getData(){
-    // return this.http.get("https://jsonplaceholder.typicode.com/users");
-    return this.http.get("https://api.postalpincode.in/pincode/110001" );
+    return this.http.get("https://jsonplaceholder.typicode.com/users");
+    // return this.http.get("https://api.postalpincode.in/pincode/110001" );
+  }
+
+  postData(){
+    return this.http.post("https://jsonplaceholder.typicode.com/posts",{ title: 'foo',
+      body: 'bar',
+      userId: 1 
+    });
   }
 
 }
